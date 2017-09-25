@@ -38,7 +38,7 @@ public class MessageView {
     public int getNumberOfMessages(){
        return messageFacade.findAll().size();
     }
-    
+   
     public String postMessage() {
     this.messageFacade.create(message);
     return "theend";
