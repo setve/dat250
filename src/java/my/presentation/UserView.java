@@ -11,6 +11,7 @@ import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import enteties.User;
+import java.util.List;
 
 /**
  *
@@ -22,6 +23,10 @@ public class UserView {
 
     @EJB
     private UserFacade userFacade;
+
+    public User getUser() {
+        return user;
+    }
     
     private User user;
 
@@ -31,5 +36,13 @@ public class UserView {
     public UserView() {
         this.user = new User();
     }
+    
+    public List<User> getUserList() {
+        return userFacade.findAll();
+    } 
+    
+    public void postUser() {
+        this.userFacade.create(user);
+    };
     
 }
