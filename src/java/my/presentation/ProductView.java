@@ -22,6 +22,8 @@ public class ProductView {
     
     @EJB
     private ProductFacade productFacade;
+    
+    private Product product;
 
     /**
      * Creates a new instance of ProductView
@@ -32,5 +34,9 @@ public class ProductView {
     public List<Product> getProductList() {
         return productFacade.findAll();
     } 
+    
+    public void postProduct() {
+    this.productFacade.create(product);
+    };
     
 }
