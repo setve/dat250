@@ -11,7 +11,9 @@
         <h:form>
             <h:outputLabel value="Message:"/><h:inputText value="#{MessageView.message.message}"/>
             <h:commandButton action="#{MessageView.postMessage}" value="Post Message"/>
+            <br/><br/>
             <h:commandButton action="#{loginBean.goToLogin}" value="foo"/>
+            <h:commandButton action="productPage" value="Go to product page"/>
         </h:form>
     </f:view>
     </h:body>

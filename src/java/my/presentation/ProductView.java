@@ -24,11 +24,26 @@ public class ProductView {
     private ProductFacade productFacade;
     
     private Product product;
+    
+    private String title = "GTX 1080";
+    private String currentBid = "100";
 
     /**
      * Creates a new instance of ProductView
      */
     public ProductView() {
+    }
+    
+    public String getProdTitle(){
+        return title;
+    }
+    
+    public String getCurrentBid(){
+        return currentBid;
+    }
+    
+    public String registerBid(){
+        return "registeredBid";
     }
     
     public List<Product> getProductList() {
