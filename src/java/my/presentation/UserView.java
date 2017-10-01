@@ -10,39 +10,63 @@ import javax.inject.Named;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import enteties.User;
+import enteties.UserE;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
 
 /**
  *
  * @author SebastianRojas
  */
-@Named(value = "userView")
+@ManagedBean
+@Named(value="userView")
 @RequestScoped
 public class UserView {
 
     @EJB
-    private UserFacade userFacade;
-
-    public User getUser() {
+    UserFacade userFacade;
+    
+    private UserE user;
+    
+    public UserE getUser() {
         return user;
     }
-    
-    private User user;
 
-    /**
-     * Creates a new instance of UserView
-     */
     public UserView() {
-        this.user = new User();
+        user = new UserE();
     }
     
-    public List<User> getUserList() {
+    public List<UserE> getUserList() {
         return userFacade.findAll();
     } 
     
-    public void postUser() {
-        this.userFacade.create(user);
+    public String postUser() {
+        userFacade.create(user);
+        return "login";
     };
+   
+    public String loginUser(){
+        List<UserE> uList = getUserList();
+        //uList = getUserList();
+        for (Iterator<UserE> it = uList.iterator(); it.hasNext();) {
+            UserE u = it.next();
+            if(u.getUsername() != null && u.getPassword() != null){
+                
+                
+                if(u.getUsername().equals(user.getUsername())){          // user.get funksjonene returnerer ikke rett string
+                    if(u.getPassword().equals(user.getPassword())){      // Funker om man tester med å skrive "admin" og "admin1234" (som er registrert i databasen) 
+                        return "successfulLogin";
+                    }
+                
+                }
+            }    
+        }
+            
+        return "index";
+    }
+    
+
     
 }

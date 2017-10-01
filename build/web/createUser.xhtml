@@ -10,14 +10,10 @@
                 <h:outputLabel value="Register"/>
             </h:form>
             <h:form>
-                <h:outputLabel value="Username"/><h:inputText value="#{userView.user.username}"/>
-            </h:form>
-            <h:form>
-                <h:outputLabel value="Password"/><h:inputText value="#{userView.user.password}"/>
-            </h:form>
-            <h:form>
+                <h:outputLabel value="Username"/><h:inputText value="#{userView.user.username}"/><br/>
+                <h:outputLabel value="Password"/><h:inputText value="#{userView.user.password}"/><br/>
                 <h:commandButton action="#{userView.postUser}" value="Create User"/>
-        </h:form>
+            </h:form>
     </h:body>
 </html>
 

@@ -10,13 +10,13 @@
             <h:outputLabel value="Log in"/>
         </h:form>
         <h:form>
-            <h:outputLabel value="Username"/><h:inputText value="#{loginBean.username}"/>
+            <h:outputLabel value="Username"/><h:inputText value="#{userView.user.username}"/>
         </h:form>
         <h:form>
-            <h:outputLabel value="Password"/><h:inputText value="#{loginBean.password}"/>
+            <h:outputLabel value="Password"/><h:inputText value="#{userView.user.password}"/>
         </h:form>
         <h:form>
-            <h:commandButton action="#{loginBean.goToLogin}" value="Log in"/>
+            <h:commandButton action="#{userView.loginUser}" value="Log in"/>
             <h:commandButton action="createUser" value="register"/>
         </h:form>
     </h:body>
