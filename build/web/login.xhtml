@@ -7,13 +7,26 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:outputLabel value="Log in"/>
-        </h:form>
-        <h:form>
-            <h:outputLabel value="Username"/><h:inputText value="#{userView.user.username}"/> <br/>
-            <h:outputLabel value="Password"/><h:inputText value="#{userView.user.password}"/> <br/>
-            <h:commandButton action="#{userView.loginUser}" value="Log in"/>
-            <h:commandButton action="createUser" value="register"/>
+            <table>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h:outputLabel value="Log in" style="font-size:300%;font-weight:bold;"/> 
+                    </td>
+                    </tr>
+                <tr>
+                    <td><h:outputLabel value="Username"/></td>
+                    <td><h:inputText value="#{userView.user.username}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Password"/></td>
+                    <td><h:inputText value="#{userView.user.password}"/></td>
+                </tr>
+                <tr>
+                    <td><h:commandButton action="#{userView.loginUser}" value="Log in"/></td>
+                    <td><h:commandButton action="createUser" value="register"/></td>
+                </tr>
+            </table>
         </h:form>
     </h:body>
 </html>
