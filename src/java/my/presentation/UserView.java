@@ -11,19 +11,18 @@ import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import enteties.UserE;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 
 
 /**
  *
  * @author SebastianRojas
  */
-@ManagedBean
 @Named(value="userView")
 @RequestScoped
-public class UserView {
+public class UserView{
 
     @EJB
     UserFacade userFacade;
@@ -53,20 +52,14 @@ public class UserView {
         for (Iterator<UserE> it = uList.iterator(); it.hasNext();) {
             UserE u = it.next();
             if(u.getUsername() != null && u.getPassword() != null){
-                
-                
-                if(u.getUsername().equals(user.getUsername())){          // user.get funksjonene returnerer ikke rett string
-                    if(u.getPassword().equals(user.getPassword())){      // Funker om man tester med å skrive "admin" og "admin1234" (som er registrert i databasen) 
+                if(u.getUsername().equals(user.getUsername())){     
+                    if(u.getPassword().equals(user.getPassword())){       
                         return "successfulLogin";
                     }
-                
                 }
             }    
         }
             
         return "index";
     }
-    
-
-    
 }

@@ -7,6 +7,7 @@ package enteties;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.concurrent.TimeUnit;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Product implements Serializable {
     private Long id;
     private String name;
     private String description;
-    private Time timeLeft;
+    private Long timeLeft;
     private String status;
     private Long currentBid;
 
@@ -45,11 +46,18 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public Time getTimeLeft() {
+    public Long getTimeLeft() {
         return timeLeft;
     }
+    
+    public String getTimeLeftString() {
+    String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(timeLeft),
+    TimeUnit.MILLISECONDS.toMinutes(timeLeft) % TimeUnit.HOURS.toMinutes(1),
+    TimeUnit.MILLISECONDS.toSeconds(timeLeft) % TimeUnit.MINUTES.toSeconds(1));
+    return hms;
+    };
 
-    public void setTimeLeft(Time timeLeft) {
+    public void setTimeLeft(Long timeLeft) {
         this.timeLeft = timeLeft;
     }
 

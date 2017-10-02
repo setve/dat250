@@ -15,7 +15,12 @@
     </tr>
     <c:forEach items="#{productView.productList}" var="product">
         <tr>
-            <td><h:outputLabel value="For løkko funkaz"/></td>
+            <td>
+                <h:outputLabel value=#{productView.product.name}/>
+                <h:outputLabel value=#{productView.product.description}/>
+            </td>
+            <td><h:outputLabel value=#{productView.product.timeLeftString}/></td>
+            <td><h:outputLabel value=#{productView.product.currentBid}/></td>
         </tr>
     </c:forEach>
 </table>

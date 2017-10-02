@@ -24,6 +24,24 @@ public class ProductView {
     private ProductFacade productFacade;
     
     private Product product;
+    private String timeUnit;
+    private int timeAmount;
+
+    public String getTimeUnit() {
+        return timeUnit;
+    }
+
+    public void setTimeUnit(String timeUnit) {
+        this.timeUnit = timeUnit;
+    }
+
+    public int getTimeAmount() {
+        return timeAmount;
+    }
+
+    public void setTimeAmount(int timeAmount) {
+        this.timeAmount = timeAmount;
+    }
 
     /**
      * Creates a new instance of ProductView
@@ -31,11 +49,22 @@ public class ProductView {
     public ProductView() {
     }
     
+    public Product getProduct() {
+        return product;
+    }
+    
     public List<Product> getProductList() {
         return productFacade.findAll();
     } 
     
     public void postProduct() {
+      if (timeUnit.equals("weeks")) {
+          product.setTimeLeft((System.currentTimeMillis()) + (604800000 * timeAmount));
+      } else if (timeUnit.equals("days")) {
+          product.setTimeLeft((System.currentTimeMillis()) + (86400000 * timeAmount));
+      } else {
+          product.setTimeLeft((System.currentTimeMillis()) + (3600000 * timeAmount));
+      }
     this.productFacade.create(product);
     };
     
