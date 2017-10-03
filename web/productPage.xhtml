@@ -22,7 +22,7 @@
         </div>
         
         
-        <img src="https://images.nvidia.com/pascal/img/gtx1080/GeForce_GTX_1080_3qtr_Front_Left.png"/>
+        <img src="https://myanimelist.cdn-dena.com/s/common/uploaded_files/1453694659-16a18b3f7c3cd8a51caa70d96917ecdf.jpeg"/>
 
         <div id="content" class="center_content">
 
@@ -33,9 +33,11 @@
             <h:form>
                 <h:outputLabel value="Enter bid: " />
                 <h:inputText binding="#{newBid}"/>
-                <h:commandButton value="Bid" action="#{productView.editCurrentBid(newBid.value)}"/>
+                <h:commandButton value="Bid" action="#{productView.editCurrentBid(newBid.value, productView.oneProduct.id)}"/>
             </h:form>
-            
+            <h:form>
+                <h:commandButton value="next" action="#{productView.goToNext}"/>
+            </h:form>
             
             
 

@@ -7,6 +7,7 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+import java.io.Serializable;
 
 import java.util.Date;
 import java.util.List;
@@ -14,14 +15,15 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author SebastianRojas
  */
 @Named(value = "productView")
-@RequestScoped
-public class ProductView {
+@SessionScoped
+public class ProductView implements Serializable{
     
     @EJB
     private ProductFacade productFacade;
@@ -48,6 +50,10 @@ public class ProductView {
         
     }
     
+    public String goToNext(){
+        return "template";
+    }
+    
     public String seeProduct() {
         return "productPage";
     }
@@ -70,13 +76,12 @@ public class ProductView {
         return productId;
     }
     
-    public void editCurrentBid(String currentBid){
+    public void editCurrentBid(String currentBid, Long productId){
         System.out.println(currentBid);
         ProductE prod = getOneProduct();
-        product = prod;
+        productFacade.updateBid(Integer.parseInt(currentBid), productId);
         //product.setCurrentBid(Long.parseLong(currentBid));
-        productFacade.update(product);
-    }
+        }
 
     public String getTimeUnit() {
         return timeUnit;

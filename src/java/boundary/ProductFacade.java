@@ -41,8 +41,17 @@ public class ProductFacade extends AbstractFacade<ProductE> {
         return query.getResultList();
     }
     
-    public ProductE update(ProductE product){
-        return em.merge(product);
+    public void AuctionProduct(ProductE product){
+        em.persist(product);
+    }
+    
+    public void updateBid(int currentBid, Long productId){
+        //Query query = em.createQuery("UPDATE producte Set currentBid = " + currentBid + 
+        //        " Where productId = " + productId);
+        
+        Query query = em.createQuery("Update ProductE p Set p.currentBid = " + currentBid
+        + " Where p.id = " + productId);
+        query.executeUpdate();
     }
     
 }
