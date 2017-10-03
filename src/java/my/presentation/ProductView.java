@@ -105,7 +105,7 @@ public class ProductView {
         return productFacade.findAll();
     } 
     
-    public void postProduct(Long id) {
+    public String postProduct(Long id) {
         product.setId(id);
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
@@ -113,6 +113,7 @@ public class ProductView {
           product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
       }
     this.productFacade.create(product);
+    return "ProductList";
     }
     
 }
