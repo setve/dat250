@@ -5,7 +5,7 @@
  */
 package boundary;
 
-import enteties.Product;
+import enteties.ProductE;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author SebastianRojas
  */
 @Stateless
-public class ProductFacade extends AbstractFacade<Product> {
+public class ProductFacade extends AbstractFacade<ProductE> {
 
     @PersistenceContext(unitName = "Oblig1PU")
     private EntityManager em;
@@ -26,7 +26,7 @@ public class ProductFacade extends AbstractFacade<Product> {
     }
 
     public ProductFacade() {
-        super(Product.class);
+        super(ProductE.class);
     }
     
 }

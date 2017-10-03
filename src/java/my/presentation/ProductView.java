@@ -6,7 +6,7 @@
 package my.presentation;
 
 import boundary.ProductFacade;
-import enteties.Product;
+import enteties.ProductE;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -23,7 +23,7 @@ public class ProductView {
     @EJB
     private ProductFacade productFacade;
     
-    private Product product;
+    private ProductE product;
     private String timeUnit;
     private int timeAmount;
 
@@ -47,13 +47,17 @@ public class ProductView {
      * Creates a new instance of ProductView
      */
     public ProductView() {
+        this.product = new ProductE();
+    this.timeUnit = new String();
+    this.timeAmount = 0;
+        
     }
     
-    public Product getProduct() {
+    public ProductE getProduct() {
         return product;
     }
     
-    public List<Product> getProductList() {
+    public List<ProductE> getProductList() {
         return productFacade.findAll();
     } 
     

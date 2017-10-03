@@ -3,8 +3,8 @@
   <persistence-unit name="Oblig1PU" transaction-type="JTA">
     <jta-data-source>java:app/jdbc/db17_g05</jta-data-source>
     <class>enteties.Message</class>
-    <class>enteties.Product</class>
     <class>enteties.UserE</class>
+    <class>enteties.ProductE</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
