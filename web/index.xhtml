@@ -1,19 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Welcome Page</title>
     </h:head>
     <h:body>
-        <f:view>
-        <h:form>
-            <h:outputLabel value="Message:"/><h:inputText value="#{MessageView.message.message}"/>
-            <h:commandButton action="#{MessageView.postMessage}" value="Post Message"/>
-            <h:commandButton action="login" value="login"/>
-        </h:form>
-    </f:view>
+        <table>
+            <tr>
+                <td></td>
+                <td><h:outputLabel value="Welcome" style="font-size:300%;font-weight:bold;"/> </td>
+            </tr>
+            <tr>
+                <td><a href="faces/login.xhtml">Sign in</a></td>
+            </tr>
+            <tr>
+                <td><a href="faces/createUser.xhtml">Sign up </a></td>
+            </tr>
+        </table>
     </h:body>
 </html>
 
