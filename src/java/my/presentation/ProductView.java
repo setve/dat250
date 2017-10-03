@@ -7,9 +7,6 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -36,7 +33,7 @@ public class ProductView {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
-    private BigDecimal minus;
+    private String sellerId;
     
     /**
      * Creates a new instance of ProductView
