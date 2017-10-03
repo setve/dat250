@@ -10,26 +10,56 @@ import javax.inject.Named;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import enteties.User;
+import enteties.UserE;
+import java.util.Iterator;
+import java.util.List;
+
+
 
 /**
  *
  * @author SebastianRojas
  */
-@Named(value = "userView")
+@Named(value="userView")
 @RequestScoped
-public class UserView {
+public class UserView{
 
     @EJB
-    private UserFacade userFacade;
+    UserFacade userFacade;
     
-    private User user;
+    private UserE user;
+    
+    public UserE getUser() {
+        return user;
+    }
 
-    /**
-     * Creates a new instance of UserView
-     */
     public UserView() {
-        this.user = new User();
+        user = new UserE();
     }
     
+    public List<UserE> getUserList() {
+        return userFacade.findAll();
+    } 
+    
+    public String postUser() {
+        userFacade.create(user);
+        return "login";
+    };
+   
+    public String loginUser(){
+        List<UserE> uList = getUserList();
+        //uList = getUserList();
+        for (Iterator<UserE> it = uList.iterator(); it.hasNext();) {
+            UserE u = it.next();
+            if(u.getUsername() != null && u.getPassword() != null){
+                if(u.getUsername().equals(user.getUsername())){     
+                    if(u.getPassword().equals(user.getPassword())){       
+                        return "successfulLogin";
+                    }
+                }
+            }    
+        }
+            
+        return "index";
+    }
 }

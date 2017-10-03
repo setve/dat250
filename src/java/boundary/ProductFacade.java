@@ -22,7 +22,7 @@ import javax.persistence.Query;
  * @author SebastianRojas
  */
 @Stateless
-public class ProductFacade extends AbstractFacade<Product> {
+public class ProductFacade extends AbstractFacade<ProductE> {
 
     @PersistenceContext(unitName = "Oblig1PU")
     private EntityManager em;
@@ -33,7 +33,7 @@ public class ProductFacade extends AbstractFacade<Product> {
     }
 
     public ProductFacade() {
-        super(Product.class);
+        super(ProductE.class);
     }
 
     public List<Product> getProduct() {
