@@ -106,6 +106,7 @@ public class ProductView {
     } 
     
     public String postProduct(Long id) {
+        System.out.print(id);
         product.setId(id);
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
