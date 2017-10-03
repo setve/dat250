@@ -8,13 +8,10 @@
         <title>Product List</title>
     </h:head>
     <h:body>
-<<<<<<< HEAD
-=======
-
->>>>>>> 0a3f275463624644deb7c329f646be63ce12afca
     <f:view>
         <h:form>
             <h1><h:outputText value="Auctions"/></h1>
+            <h:commandButton action="createProduct" value="Create auction"/>
             <h:dataTable value="#{productView.productList}" var="item">
                 <h:column>
                     <f:facet name="header">
@@ -30,18 +27,18 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="TimeLeftString"/>
+                        <h:outputText value="Time Left"/>
                     </f:facet>
                     <h:outputText value="#{item.timeLeftString}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="CurrentBid"/>
+                        <h:outputText value="Current bid"/>
                     </f:facet>
                     <h:outputText value="#{item.currentBid}"/>
                 </h:column>
                 <h:column>
-                    <h:commandButton value="Bid" action="#{productView.goToProductPage(item.id)}"/>
+                    <h:commandButton value="Go to product" action="#{productView.goToProductPage(item.id)}"/>
                 </h:column>
             </h:dataTable>
         </h:form>

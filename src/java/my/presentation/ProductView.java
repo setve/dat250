@@ -7,10 +7,7 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
-<<<<<<< HEAD
 
-=======
->>>>>>> 0a3f275463624644deb7c329f646be63ce12afca
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -37,11 +34,8 @@ public class ProductView {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
-<<<<<<< HEAD
     private Long productId = new Long(123);
-=======
     private String sellerId;
->>>>>>> 0a3f275463624644deb7c329f646be63ce12afca
     
     /**
      * Creates a new instance of ProductView
@@ -77,7 +71,9 @@ public class ProductView {
     
     public void editCurrentBid(String currentBid){
         System.out.println(currentBid);
-        this.currentBid = currentBid;
+        //ProductE prod = productFacade.find(productId);
+        //prod.setCurrentBid(Long.parseLong(currentBid));
+        
     }
 
     public String getTimeUnit() {
@@ -96,8 +92,12 @@ public class ProductView {
         this.timeAmount = timeAmount;
     }
     
-    public ProductE getProduct() {
+    public ProductE getOneProduct() {
         return productFacade.find(productId);
+    }
+    
+    public ProductE getProduct() {
+        return product;
     }
     
     public String getProdTitle(){

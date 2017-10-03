@@ -18,7 +18,7 @@
         </div>
         
         <div id="top" class="top">
-            <h1><h:outputLabel value="#{productView.product.name}"/></h1>
+            <h1><h:outputLabel value="#{productView.oneProduct.name}"/></h1>
         </div>
         
         
@@ -26,10 +26,10 @@
 
         <div id="content" class="center_content">
 
-            <p> Current bid: <h:outputLabel value="#{productView.product.currentBid}"/></p>
-            <p> Remaining time: <h:outputLabel value="#{productView.timeAmount}"/>
-                <h:outputLabel value="#{productView.timeUnit}"/></p>
-            
+            <p> Current bid: <h:outputLabel value="#{productView.oneProduct.currentBid}"/></p>
+            <p> Remaining time:
+                <h:outputLabel value="#{productView.oneProduct.timeLeftString}"/>
+            </p>            
             <h:form>
                 <h:outputLabel value="Enter bid: " />
                 <h:inputText binding="#{newBid}"/>
@@ -43,13 +43,13 @@
 
             <ul>
                 <li>
-                    Name: <h:outputLabel value="#{productView.prodTitle}"/>
+                    Name: <h:outputLabel value="#{productView.oneProduct.name}"/>
                 </li>
                 <li>
                     Rating: 
                 </li>
                 <li>
-                    Description: 
+                    Description: <h:outputLabel value="#{productView.oneProduct.description}"/>
                 </li>
             </ul>
             <h4>Infomation about seller</h4>
