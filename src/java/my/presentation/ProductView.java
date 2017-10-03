@@ -7,6 +7,7 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -25,6 +26,8 @@ public class ProductView {
     
     private ProductE product;
     
+    
+    
     private String title = "GTX 1080";
     String currentBid;
     private String timeUnit;
@@ -32,6 +35,10 @@ public class ProductView {
     
     public String getCurrentBid(){
         return currentBid;
+    }
+    
+    public void printDate(Date newDate){
+        System.out.println(newDate);
     }
     
     public void editCurrentBid(String currentBid){
