@@ -54,7 +54,7 @@ public class UserView{
             if(u.getUsername() != null && u.getPassword() != null){
                 if(u.getUsername().equals(user.getUsername())){     
                     if(u.getPassword().equals(user.getPassword())){       
-                        return "successfulLogin";
+                        return "ProductList";
                     }
                 }
             }    

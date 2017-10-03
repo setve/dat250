@@ -11,8 +11,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
-import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -25,7 +23,7 @@ public class ProductView {
     @EJB
     private ProductFacade productFacade;
     
-    private Product product;
+    private ProductE product;
     
     private String title = "GTX 1080";
     String currentBid;
@@ -69,6 +67,8 @@ public class ProductView {
     
     public ProductE getProduct() {
         return product;
+    }
+    
     public String getProdTitle(){
         return title;
     }
@@ -86,6 +86,6 @@ public class ProductView {
           product.setTimeLeft((System.currentTimeMillis()) + (3600000 * timeAmount));
       }
     this.productFacade.create(product);
-    };
+    }
     
 }
