@@ -23,7 +23,11 @@ import javax.enterprise.context.SessionScoped;
  */
 @Named(value = "productView")
 @SessionScoped
+<<<<<<< HEAD
 public class ProductView implements Serializable {
+=======
+public class ProductView implements Serializable{
+>>>>>>> 0529bf7e0b32c23f5701822ea586c4b19865185e
     
     @EJB
     private ProductFacade productFacade;
@@ -36,9 +40,9 @@ public class ProductView implements Serializable {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
-
     private Long productId = new Long(123);
     private String sellerId;
+
     
     /**
      * Creates a new instance of ProductView
@@ -48,6 +52,10 @@ public class ProductView implements Serializable {
     this.timeUnit = new String();
     this.timeAmount = 0;
         
+    }
+    
+    public String goToNext(){
+        return "template";
     }
     
     public String seeProduct() {
@@ -72,12 +80,12 @@ public class ProductView implements Serializable {
         return productId;
     }
     
-    public void editCurrentBid(String currentBid){
+    public void editCurrentBid(String currentBid, Long productId){
         System.out.println(currentBid);
-        //ProductE prod = productFacade.find(productId);
-        //prod.setCurrentBid(Long.parseLong(currentBid));
-        
-    }
+        ProductE prod = getOneProduct();
+        productFacade.updateBid(Integer.parseInt(currentBid), productId);
+        //product.setCurrentBid(Long.parseLong(currentBid));
+        }
 
     public String getTimeUnit() {
         return timeUnit;
@@ -95,7 +103,6 @@ public class ProductView implements Serializable {
         this.timeAmount = timeAmount;
     }
     
-
     public ProductE getOneProduct() {
         return productFacade.find(productId);
     }

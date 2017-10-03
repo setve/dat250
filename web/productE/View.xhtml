@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProductETitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProductELabel_userId}"/>
+                    <h:outputText value="#{productEController.selected.userId}" title="#{bundle.ViewProductETitle_userId}"/>
+                    <h:outputText value="#{bundle.ViewProductELabel_name}"/>
+                    <h:outputText value="#{productEController.selected.name}" title="#{bundle.ViewProductETitle_name}"/>
+                    <h:outputText value="#{bundle.ViewProductELabel_description}"/>
+                    <h:outputText value="#{productEController.selected.description}" title="#{bundle.ViewProductETitle_description}"/>
+                    <h:outputText value="#{bundle.ViewProductELabel_timeLeft}"/>
+                    <h:outputText value="#{productEController.selected.timeLeft}" title="#{bundle.ViewProductETitle_timeLeft}"/>
+                    <h:outputText value="#{bundle.ViewProductELabel_timeLeftString}"/>
+                    <h:outputText value="#{productEController.selected.timeLeftString}" title="#{bundle.ViewProductETitle_timeLeftString}"/>
+                    <h:outputText value="#{bundle.ViewProductELabel_status}"/>
+                    <h:outputText value="#{productEController.selected.status}" title="#{bundle.ViewProductETitle_status}"/>
+                    <h:outputText value="#{bundle.ViewProductELabel_currentBid}"/>
+                    <h:outputText value="#{productEController.selected.currentBid}" title="#{bundle.ViewProductETitle_currentBid}"/>
+                    <h:outputText value="#{bundle.ViewProductELabel_id}"/>
+                    <h:outputText value="#{productEController.selected.id}" title="#{bundle.ViewProductETitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productEController.destroyAndView}" value="#{bundle.ViewProductEDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProductEEditLink}"/>
+                <br />
+                <h:commandLink action="#{productEController.prepareCreate}" value="#{bundle.ViewProductECreateLink}" />
+                <br />
+                <h:commandLink action="#{productEController.prepareList}" value="#{bundle.ViewProductEShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProductEIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
