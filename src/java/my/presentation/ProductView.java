@@ -7,8 +7,10 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -27,6 +29,8 @@ public class ProductView {
     private ProductFacade productFacade;
     
     private ProductE product;
+    
+    
     
     private String title = "GTX 1080";
     String currentBid;
@@ -50,6 +54,10 @@ public class ProductView {
     
     public String getCurrentBid(){
         return currentBid;
+    }
+    
+    public void printDate(Date newDate){
+        System.out.println(newDate);
     }
     
     public void editCurrentBid(String currentBid){
