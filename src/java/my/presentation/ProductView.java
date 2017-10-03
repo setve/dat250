@@ -8,8 +8,6 @@ package my.presentation;
 import boundary.ProductFacade;
 import enteties.ProductE;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -36,7 +34,7 @@ public class ProductView {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
-    private BigDecimal minus;
+    private Long productId = new Long(123);
     
     /**
      * Creates a new instance of ProductView
@@ -61,8 +59,13 @@ public class ProductView {
     }
     
     public String goToProductPage(Long productId){
+        this.productId = productId;
         System.out.println(productId);
         return "productPage";
+    }
+    
+    public Long getProductId(){
+        return productId;
     }
     
     public void editCurrentBid(String currentBid){
@@ -87,7 +90,7 @@ public class ProductView {
     }
     
     public ProductE getProduct() {
-        return product;
+        return productFacade.find(productId);
     }
     
     public String getProdTitle(){
