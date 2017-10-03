@@ -11,10 +11,12 @@ import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import enteties.UserE;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 
 
 
@@ -23,8 +25,8 @@ import java.util.List;
  * @author SebastianRojas
  */
 @Named(value="userView")
-@RequestScoped
-public class UserView{
+@SessionScoped
+public class UserView implements Serializable{
 
     @EJB
     UserFacade userFacade;
