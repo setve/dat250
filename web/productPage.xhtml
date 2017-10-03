@@ -18,7 +18,7 @@
         </div>
         
         <div id="top" class="top">
-            <h1><h:outputLabel value="#{productView.prodTitle}"/></h1>
+            <h1><h:outputLabel value="#{productView.product.name}"/></h1>
         </div>
         
         
@@ -26,7 +26,7 @@
 
         <div id="content" class="center_content">
 
-            <p> Current bid: <h:outputLabel value="#{productView.currentBid}"/></p>
+            <p> Current bid: <h:outputLabel value="#{productView.product.currentBid}"/></p>
             <p> Remaining time: <h:outputLabel value="#{productView.timeAmount}"/>
                 <h:outputLabel value="#{productView.timeUnit}"/></p>
             
@@ -64,6 +64,8 @@
             </ul>
 
         </div>
+        
+        
 
     </h:body>
 

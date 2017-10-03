@@ -7,6 +7,7 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -34,6 +35,10 @@ public class ProductView {
     private String timeUnit;
     private int timeAmount;
 
+    private Long productId = new Long(123);
+
+    private String sellerId;
+
     
     /**
      * Creates a new instance of ProductView
@@ -58,8 +63,13 @@ public class ProductView {
     }
     
     public String goToProductPage(Long productId){
+        this.productId = productId;
         System.out.println(productId);
         return "productPage";
+    }
+    
+    public Long getProductId(){
+        return productId;
     }
     
     public void editCurrentBid(String currentBid){
