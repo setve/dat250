@@ -41,6 +41,11 @@ public class ProductView {
         System.out.println(newDate);
     }
     
+    public String goToProductPage(Long productId){
+        System.out.println(productId);
+        return "productPage";
+    }
+    
     public void editCurrentBid(String currentBid){
         System.out.println(currentBid);
         this.currentBid = currentBid;

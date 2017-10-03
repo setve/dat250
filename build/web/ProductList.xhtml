@@ -42,6 +42,9 @@
                     </f:facet>
                     <h:outputText value="#{item.currentBid}"/>
                 </h:column>
+                <h:column>
+                    <h:commandButton value="Bid" action="#{productView.goToProductPage(item.id)}"/>
+                </h:column>
             </h:dataTable>
         </h:form>
     </f:view>
