@@ -8,9 +8,13 @@
         <title>Product List</title>
     </h:head>
     <h:body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0a3f275463624644deb7c329f646be63ce12afca
     <f:view>
         <h:form>
-            <h1><h:outputText value="List"/></h1>
+            <h1><h:outputText value="Auctions"/></h1>
             <h:dataTable value="#{productView.productList}" var="item">
                 <h:column>
                     <f:facet name="header">
@@ -29,12 +33,6 @@
                         <h:outputText value="TimeLeftString"/>
                     </f:facet>
                     <h:outputText value="#{item.timeLeftString}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Status"/>
-                    </f:facet>
-                    <h:outputText value="#{item.status}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">

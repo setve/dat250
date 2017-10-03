@@ -7,7 +7,10 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0a3f275463624644deb7c329f646be63ce12afca
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -34,7 +37,11 @@ public class ProductView {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
+<<<<<<< HEAD
     private Long productId = new Long(123);
+=======
+    private String sellerId;
+>>>>>>> 0a3f275463624644deb7c329f646be63ce12afca
     
     /**
      * Creates a new instance of ProductView
