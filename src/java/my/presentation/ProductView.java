@@ -27,6 +27,9 @@ public class ProductView {
     private ProductFacade productFacade;
     
     private ProductE product;
+    
+    private String title = "GTX 1080";
+    String currentBid;
     private String timeUnit;
     private int timeAmount;
     private BigDecimal minus;
@@ -43,6 +46,15 @@ public class ProductView {
     
     public String seeProduct() {
         return "productPage";
+    }
+    
+    public String getCurrentBid(){
+        return currentBid;
+    }
+    
+    public void editCurrentBid(String currentBid){
+        System.out.println(currentBid);
+        this.currentBid = currentBid;
     }
 
     public String getTimeUnit() {
@@ -65,6 +77,10 @@ public class ProductView {
         return product;
     }
     
+    public String getProdTitle(){
+        return title;
+    }
+    
     public List<ProductE> getProductList() {
         return productFacade.findAll();
     } 
@@ -76,6 +92,6 @@ public class ProductView {
           product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
       }
     this.productFacade.create(product);
-    };
+    }
     
 }
