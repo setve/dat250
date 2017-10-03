@@ -6,9 +6,16 @@
 package boundary;
 
 import enteties.Product;
+import java.util.List;
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.jms.JMSConnectionFactory;
+import javax.jms.JMSContext;
+import javax.jms.Queue;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +34,15 @@ public class ProductFacade extends AbstractFacade<Product> {
 
     public ProductFacade() {
         super(Product.class);
+    }
+
+    public List<Product> getProduct() {
+        Query query = em.createNamedQuery("Product.findAll");
+        return query.getResultList();
+    }
+    
+    public Product update(Product product){
+        return em.merge(product);
     }
     
 }

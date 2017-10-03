@@ -11,6 +11,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -26,7 +28,34 @@ public class ProductView {
     private Product product;
     
     private String title = "GTX 1080";
-    private String currentBid = "100";
+    String currentBid;
+    private String timeUnit;
+    private int timeAmount;
+    
+    public String getCurrentBid(){
+        return currentBid;
+    }
+    
+    public void editCurrentBid(String currentBid){
+        System.out.println(currentBid);
+        this.currentBid = currentBid;
+    }
+
+    public String getTimeUnit() {
+        return timeUnit;
+    }
+
+    public void setTimeUnit(String timeUnit) {
+        this.timeUnit = timeUnit;
+    }
+
+    public int getTimeAmount() {
+        return timeAmount;
+    }
+
+    public void setTimeAmount(int timeAmount) {
+        this.timeAmount = timeAmount;
+    }
 
     /**
      * Creates a new instance of ProductView
@@ -38,19 +67,18 @@ public class ProductView {
         return title;
     }
     
-    public String getCurrentBid(){
-        return currentBid;
-    }
-    
-    public String registerBid(){
-        return "registeredBid";
-    }
-    
     public List<Product> getProductList() {
         return productFacade.findAll();
     } 
     
     public void postProduct() {
+      if (timeUnit.equals("weeks")) {
+          product.setTimeLeft((System.currentTimeMillis()) + (604800000 * timeAmount));
+      } else if (timeUnit.equals("days")) {
+          product.setTimeLeft((System.currentTimeMillis()) + (86400000 * timeAmount));
+      } else {
+          product.setTimeLeft((System.currentTimeMillis()) + (3600000 * timeAmount));
+      }
     this.productFacade.create(product);
     };
     
