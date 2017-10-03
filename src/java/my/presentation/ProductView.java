@@ -34,16 +34,10 @@ public class ProductView {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
-<<<<<<< HEAD
     private Long productId = new Long(123);
     private String sellerId;
-=======
 
-    private Long productId = new Long(123);
 
-    private String sellerId;
-
->>>>>>> f3d9dab6a50b72e2e544a3441d4abc582eacccb0
     
     /**
      * Creates a new instance of ProductView
@@ -79,9 +73,10 @@ public class ProductView {
     
     public void editCurrentBid(String currentBid){
         System.out.println(currentBid);
-        //ProductE prod = productFacade.find(productId);
-        //prod.setCurrentBid(Long.parseLong(currentBid));
-        
+        ProductE prod = getOneProduct();
+        product = prod;
+        //product.setCurrentBid(Long.parseLong(currentBid));
+        productFacade.update(product);
     }
 
     public String getTimeUnit() {
@@ -100,15 +95,9 @@ public class ProductView {
         this.timeAmount = timeAmount;
     }
     
-<<<<<<< HEAD
     public ProductE getOneProduct() {
         return productFacade.find(productId);
-=======
-    public ProductE getProduct() {
-        return product;
->>>>>>> f3d9dab6a50b72e2e544a3441d4abc582eacccb0
     }
-    
     public ProductE getProduct() {
         return product;
     }
