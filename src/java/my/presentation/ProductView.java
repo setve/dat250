@@ -7,17 +7,20 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author SebastianRojas
  */
 @Named(value = "productView")
-@Dependent
+@RequestScoped
 public class ProductView {
     
     @EJB
@@ -26,6 +29,21 @@ public class ProductView {
     private ProductE product;
     private String timeUnit;
     private int timeAmount;
+    private BigDecimal minus;
+    
+    /**
+     * Creates a new instance of ProductView
+     */
+    public ProductView() {
+    this.product = new ProductE();
+    this.timeUnit = new String();
+    this.timeAmount = 0;
+        
+    }
+    
+    public String seeProduct() {
+        return "productPage";
+    }
 
     public String getTimeUnit() {
         return timeUnit;
@@ -42,16 +60,6 @@ public class ProductView {
     public void setTimeAmount(int timeAmount) {
         this.timeAmount = timeAmount;
     }
-
-    /**
-     * Creates a new instance of ProductView
-     */
-    public ProductView() {
-        this.product = new ProductE();
-    this.timeUnit = new String();
-    this.timeAmount = 0;
-        
-    }
     
     public ProductE getProduct() {
         return product;
@@ -63,11 +71,9 @@ public class ProductView {
     
     public void postProduct() {
       if (timeUnit.equals("weeks")) {
-          product.setTimeLeft((System.currentTimeMillis()) + (604800000 * timeAmount));
+          product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
       } else if (timeUnit.equals("days")) {
-          product.setTimeLeft((System.currentTimeMillis()) + (86400000 * timeAmount));
-      } else {
-          product.setTimeLeft((System.currentTimeMillis()) + (3600000 * timeAmount));
+          product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
       }
     this.productFacade.create(product);
     };

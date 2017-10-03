@@ -7,6 +7,9 @@ package enteties;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,9 +54,9 @@ public class ProductE implements Serializable {
     }
     
     public String getTimeLeftString() {
-    String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(timeLeft),
-    TimeUnit.MILLISECONDS.toMinutes(timeLeft) % TimeUnit.HOURS.toMinutes(1),
-    TimeUnit.MILLISECONDS.toSeconds(timeLeft) % TimeUnit.MINUTES.toSeconds(1));
+    SimpleDateFormat formatter = new SimpleDateFormat("dd:HH:mm:ss", Locale.UK);
+    Date date = new Date(timeLeft - System.currentTimeMillis());
+    String hms = formatter.format(date);
     return hms;
     };
 
