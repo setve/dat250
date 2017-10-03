@@ -5,7 +5,7 @@
  */
 package boundary;
 
-import enteties.Product;
+import enteties.ProductE;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
@@ -36,12 +36,12 @@ public class ProductFacade extends AbstractFacade<ProductE> {
         super(ProductE.class);
     }
 
-    public List<Product> getProduct() {
+    public List<ProductE> getProduct() {
         Query query = em.createNamedQuery("Product.findAll");
         return query.getResultList();
     }
     
-    public Product update(Product product){
+    public ProductE update(ProductE product){
         return em.merge(product);
     }
     
