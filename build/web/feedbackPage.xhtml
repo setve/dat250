@@ -13,7 +13,9 @@
                 <h3>Please give a feedback</h3>
             
                 <h:inputText value="#{FeedbackView.feedback.feedbackMessage}"/>
+                <h:outputLabel value="Rating: "/><h:inputText value="#{FeedbackView.feedback.rating}" size="1" maxlength="1"/><h:outputLabel value=" (1-5)"/><br/><br/>
                 <h:commandButton action="#{FeedbackView.postFeedback}" value="Post Feedback"/>
+                
             
                 <h:commandButton action="login" value="Log out"/>
         </h:form>
