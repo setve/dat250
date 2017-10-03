@@ -11,6 +11,8 @@ import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import enteties.UserE;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,6 +38,10 @@ public class UserView{
     public UserView() {
         user = new UserE();
     }
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm:ss");
+    String datoOgTid = sdf.format(new Date());
+    Date date = new Date();
+    
     
     public List<UserE> getUserList() {
         return userFacade.findAll();
@@ -60,6 +66,6 @@ public class UserView{
             }    
         }
             
-        return "index";
+        return "login";
     }
 }
