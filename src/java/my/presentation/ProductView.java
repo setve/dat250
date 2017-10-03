@@ -37,7 +37,6 @@ public class ProductView {
     private Long productId = new Long(123);
     private String sellerId;
 
-
     
     /**
      * Creates a new instance of ProductView
@@ -98,8 +97,10 @@ public class ProductView {
     public ProductE getOneProduct() {
         return productFacade.find(productId);
     }
+
     public ProductE getProduct() {
         return product;
+
     }
     
     public String getProdTitle(){
@@ -110,8 +111,9 @@ public class ProductView {
         return productFacade.findAll();
     } 
     
-    public String postProduct(Long id) {
-        product.setId(id);
+    public String postProduct(String id) {
+        System.out.print(id);
+        product.setUserId(id);
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
       } else if (timeUnit.equals("days")) {

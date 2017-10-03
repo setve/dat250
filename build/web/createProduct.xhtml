@@ -18,7 +18,7 @@
    	    <f:selectItem itemValue="days" itemLabel="Days" />
    	    <f:selectItem itemValue="weeks" itemLabel="Weeks" />
             </h:selectOneRadio>
-            <h:commandButton action="#{productView.postProduct(userView.user.id)}" value="Create product"/>
+            <h:commandButton action="#{productView.postProduct(userView.user.username)}" value="Create product"/>
         </h:form>
     </f:view>
     </h:body>
