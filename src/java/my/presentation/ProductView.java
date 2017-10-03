@@ -33,7 +33,7 @@ public class ProductView {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
-    private String sellerId;
+
     
     /**
      * Creates a new instance of ProductView
@@ -95,7 +95,8 @@ public class ProductView {
         return productFacade.findAll();
     } 
     
-    public void postProduct() {
+    public void postProduct(Long id) {
+        product.setId(id);
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
       } else if (timeUnit.equals("days")) {
