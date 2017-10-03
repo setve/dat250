@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="DAT250:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/DAT250_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="DAT250/javaeeApplication/javaEEApplication" />
+      <element id="directory" name="ejb.jar">
+        <element id="artifact" artifact-name="DAT250:ejb exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>

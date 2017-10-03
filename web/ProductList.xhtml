@@ -2,28 +2,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Product List</title>
     </h:head>
     <h:body>
-<table>
-    <tr>
-        <td><h:outputLabel value="Product"/></td>
-        <td><h:outputLabel value="Time left"/></td>
-        <td><h:outputLabel value="Current bid"/></td>
-    </tr>
-    <c:forEach items="#{productView.productList}" var="product">
-        <tr>
-            <td>
-                <h:outputLabel value=#{productView.product.name}/>
-                <h:outputLabel value=#{productView.product.description}/>
-            </td>
-            <td><h:outputLabel value=#{productView.product.timeLeftString}/></td>
-            <td><h:outputLabel value=#{productView.product.currentBid}/></td>
-        </tr>
-    </c:forEach>
-</table>
+    <f:view>
+        <h:form>
+            <h1><h:outputText value="List"/></h1>
+            <h:dataTable value="#{productView.productList}" var="item">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Name"/>
+                    </f:facet>
+                    <h:outputText value="#{item.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Description"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="TimeLeftString"/>
+                    </f:facet>
+                    <h:outputText value="#{item.timeLeftString}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Status"/>
+                    </f:facet>
+                    <h:outputText value="#{item.status}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="CurrentBid"/>
+                    </f:facet>
+                    <h:outputText value="#{item.currentBid}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </f:view>
     </h:body>
 </html>
 
