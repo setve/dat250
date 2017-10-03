@@ -40,10 +40,6 @@ public class UserView implements Serializable{
     public UserView() {
         user = new UserE();
     }
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm:ss");
-    String datoOgTid = sdf.format(new Date());
-    Date date = new Date();
-    
     
     public List<UserE> getUserList() {
         return userFacade.findAll();

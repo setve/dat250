@@ -37,7 +37,9 @@
             </h:form>
             
             
-            
+            <h:form>
+                <h:commandButton action="feedbackPage" value="Feedback"/>
+            </h:form>
 
             <h4>Information about product</h4>
 
@@ -46,8 +48,9 @@
                     Name: <h:outputLabel value="#{productView.oneProduct.name}"/>
                 </li>
                 <li>
-                    Rating: 
+                    Rating: <h:outputLabel value="#{productView.oneProduct.averageRating}"/>
                 </li>
+                
                 <li>
                     Description: <h:outputLabel value="#{productView.oneProduct.description}"/>
                 </li>

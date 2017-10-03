@@ -7,6 +7,7 @@ package my.presentation;
 
 import boundary.FeedbackFacade;
 import enteties.Fback;
+import enteties.ProductE;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -35,9 +36,16 @@ public class FeedbackView {
         return feedback;
     }
     
-    public String postFeedback() {
+    public String postFeedback(ProductE product) {
+        
+        if(feedback.getRating() < 1)
+            feedback.setRating(1);
+        else if(feedback.getRating() > 5)
+            feedback.setRating(5);
         this.feedbackFacade.create(feedback);
-        return "login";
+        product.setSumOfRatings(feedback.getRating());
+        System.out.println("FeedbackView; numberOfRatings" + feedback.getRating());
+        return "ProductList";
     }
     
     

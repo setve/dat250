@@ -6,26 +6,32 @@
 package enteties;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
  * @author SebastianRojas
  */
 @Entity
+@Table(name= "ProductE")
 public class ProductE implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    @Column
     private Long id;
     private String name;
     private String description;
@@ -33,6 +39,33 @@ public class ProductE implements Serializable {
     private String status;
     private Long currentBid;
     private String userId;
+    
+    @Transient
+    private int numberOfRatings;
+    @Transient
+    private int sumOfRatings;
+
+    public int getNumberOfRatings() {
+        return numberOfRatings;
+    }
+
+    public void setNumberOfRatings(int numberOfRatings) {
+        this.numberOfRatings = numberOfRatings;
+    }
+
+    public int getSumOfRatings() {
+        return sumOfRatings;
+    }
+
+    public void setSumOfRatings(int sumOfRatings) {
+        this.sumOfRatings += sumOfRatings;
+        this.numberOfRatings++;
+        System.out.println("Product Entity Funksjon; numberOfRatings" + this.getNumberOfRatings());
+        System.out.println("Product Entity Funksjon: sumOfRatings" + this.getSumOfRatings());
+    }
+    
+
+    
 
     public String getUserId() {
         return userId;
@@ -96,6 +129,7 @@ public class ProductE implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
 
     @Override
     public int hashCode() {
@@ -121,5 +155,15 @@ public class ProductE implements Serializable {
     public String toString() {
         return "enteties.Product[ id=" + id + " ]";
     }
+    
+    public double getAverageRating(){
+        System.out.println("Product Entity; numberOfRatings" + this.numberOfRatings);
+        System.out.println("Product Entity: sumOfRatings" + this.sumOfRatings);
+        //if(this.getNumberOfRatings() != 0){
+            //return (this.sumOfRatings/numberOfRatings);
+        //}
+        return 0.0;
+    }
+    
     
 }

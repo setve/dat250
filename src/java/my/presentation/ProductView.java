@@ -7,6 +7,7 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+import java.io.Serializable;
 
 import java.util.Date;
 import java.util.List;
@@ -14,14 +15,15 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author SebastianRojas
  */
 @Named(value = "productView")
-@RequestScoped
-public class ProductView {
+@SessionScoped
+public class ProductView implements Serializable {
     
     @EJB
     private ProductFacade productFacade;
@@ -111,9 +113,13 @@ public class ProductView {
         return productFacade.findAll();
     } 
     
+
+    
     public String postProduct(String id) {
         System.out.print(id);
         product.setUserId(id);
+        product.setNumberOfRatings(0);
+        product.setSumOfRatings(0);
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
       } else if (timeUnit.equals("days")) {
@@ -122,5 +128,4 @@ public class ProductView {
     this.productFacade.create(product);
     return "ProductList";
     }
-    
 }

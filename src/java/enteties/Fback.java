@@ -24,7 +24,8 @@ public class Fback implements Serializable {
     private Long id;
     private String feedbackMessage;
     private Integer rating;
-    private UserE user;
+    
+
 
     public Long getId() {
         return id;
@@ -48,14 +49,6 @@ public class Fback implements Serializable {
 
     public void setRating(Integer rating) {
         this.rating = rating;
-    }
-
-    public UserE getUser() {
-        return user;
-    }
-
-    public void setUser(UserE user) {
-        this.user = user;
     }
     
     
