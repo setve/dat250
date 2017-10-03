@@ -23,11 +23,9 @@ import javax.enterprise.context.SessionScoped;
  */
 @Named(value = "productView")
 @SessionScoped
-<<<<<<< HEAD
+
 public class ProductView implements Serializable {
-=======
-public class ProductView implements Serializable{
->>>>>>> 0529bf7e0b32c23f5701822ea586c4b19865185e
+
     
     @EJB
     private ProductFacade productFacade;
@@ -86,6 +84,14 @@ public class ProductView implements Serializable{
         productFacade.updateBid(Integer.parseInt(currentBid), productId);
         //product.setCurrentBid(Long.parseLong(currentBid));
         }
+    
+    public void updateRating(double rating){
+        System.out.println("new rating: " + rating);
+        ProductE prod = productFacade.find(productId);
+        double sumOfRating = prod.getSumOfRatings() + rating;
+        double numberOfRatings = prod.getNumberOfRatings()+1;
+        productFacade.updateRating(sumOfRating, numberOfRatings, productId);
+    }
 
     public String getTimeUnit() {
         return timeUnit;
@@ -120,7 +126,7 @@ public class ProductView implements Serializable{
         return productFacade.findAll();
     } 
     
-
+    
     
     public String postProduct(String id) {
         System.out.print(id);
@@ -134,5 +140,16 @@ public class ProductView implements Serializable{
       }
     this.productFacade.create(product);
     return "ProductList";
+    }
+    
+    public double getAverageRating(){
+        ProductE prod = getOneProduct();
+        double nrOfRatings = prod.getNumberOfRatings();
+        double sumOfRatings = prod.getSumOfRatings();
+        
+        if(nrOfRatings != 0){
+            return (sumOfRatings/nrOfRatings);
+        }
+        return 0.0;
     }
 }

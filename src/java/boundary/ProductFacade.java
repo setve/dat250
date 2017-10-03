@@ -54,14 +54,14 @@ public class ProductFacade extends AbstractFacade<ProductE> {
         query.executeUpdate();
     }
     
-    public void updateRating(double sumOfRatings, double avgRating, Long productId){
+    public void updateRating(double sumOfRatings, double numberOfRatings, Long productId){
         Query query = em.createQuery("Update ProductE p Set p.sumOfRatings = " + sumOfRatings
-        + " Where p.id = " + productId);
+        + ", p.numberOfRatings = " + numberOfRatings + " Where p.id = " + productId);
         query.executeUpdate();
-        
-        query = em.createQuery("Update ProductE p Set p.numberOfRatings = " + avgRating
+        /*
+        query = em.createQuery("Update ProductE p Set p.numberOfRatings = " + numberOfRatings
         + " Where p.id = " + productId);
-        query.executeUpdate();
+        query.executeUpdate();*/
     }
     
 }

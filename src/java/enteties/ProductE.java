@@ -39,10 +39,7 @@ public class ProductE implements Serializable {
     private String status;
     private Long currentBid;
     private String userId;
-    
-    @Transient
     private int numberOfRatings;
-    @Transient
     private int sumOfRatings;
 
     public int getNumberOfRatings() {
@@ -158,14 +155,5 @@ public class ProductE implements Serializable {
         return "enteties.Product[ id=" + id + " ]";
     }
     
-    public double getAverageRating(){
-        System.out.println("Product Entity; numberOfRatings" + this.numberOfRatings);
-        System.out.println("Product Entity: sumOfRatings" + this.sumOfRatings);
-        //if(this.getNumberOfRatings() != 0){
-            //return (this.sumOfRatings/numberOfRatings);
-        //}
-        return 0.0;
-    }
-    
-    
+  
 }
