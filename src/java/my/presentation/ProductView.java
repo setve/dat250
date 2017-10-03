@@ -34,8 +34,16 @@ public class ProductView {
     String currentBid;
     private String timeUnit;
     private int timeAmount;
+<<<<<<< HEAD
     private Long productId = new Long(123);
     private String sellerId;
+=======
+
+    private Long productId = new Long(123);
+
+    private String sellerId;
+
+>>>>>>> f3d9dab6a50b72e2e544a3441d4abc582eacccb0
     
     /**
      * Creates a new instance of ProductView
@@ -92,8 +100,13 @@ public class ProductView {
         this.timeAmount = timeAmount;
     }
     
+<<<<<<< HEAD
     public ProductE getOneProduct() {
         return productFacade.find(productId);
+=======
+    public ProductE getProduct() {
+        return product;
+>>>>>>> f3d9dab6a50b72e2e544a3441d4abc582eacccb0
     }
     
     public ProductE getProduct() {
@@ -108,13 +121,15 @@ public class ProductView {
         return productFacade.findAll();
     } 
     
-    public void postProduct() {
+    public String postProduct(Long id) {
+        product.setId(id);
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
       } else if (timeUnit.equals("days")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
       }
     this.productFacade.create(product);
+    return "ProductList";
     }
     
 }
