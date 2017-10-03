@@ -98,9 +98,6 @@ public class UserE implements Serializable {
         this.rating = rating;
     }
     
-
-    
-    
     public Long getId() {
         return id;
     }
