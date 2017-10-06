@@ -37,7 +37,8 @@ public class ProductFacade extends AbstractFacade<ProductE> {
     }
 
     public List<ProductE> getProduct() {
-        Query query = em.createNamedQuery("Product.findAll");
+        Query query = em.createQuery("SELECT p FROM ProductE p");
+        //Query query = em.createNamedQuery("Product.findAll");
         return query.getResultList();
     }
     

@@ -34,12 +34,11 @@ public class ProductView implements Serializable {
     
     
     
-    private String title = "GTX 1080";
+    private final String title = "GTX 1080";
     String currentBid;
     private String timeUnit;
     private int timeAmount;
     private Long productId = new Long(123);
-    private String sellerId;
 
     
     /**
