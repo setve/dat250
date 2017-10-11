@@ -18,7 +18,10 @@
    	    <f:selectItem itemValue="days" itemLabel="Days" />
    	    <f:selectItem itemValue="weeks" itemLabel="Weeks" />
             </h:selectOneRadio>
-            <h:commandButton action="#{productECreation.postProduct(userView.user.username)}" value="Create product"/>
+            <navigation-case>
+                <h:commandButton action="#{productECreation.postProduct(userView.user.username)}" value="Create product"/>
+                <redirect/>
+            </navigation-case>
         </h:form>
     </f:view>
     </h:body>

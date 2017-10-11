@@ -7,9 +7,15 @@ package my.presentation;
 
 import boundary.ProductFacade;
 import enteties.ProductE;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Locale;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -68,7 +74,7 @@ public class ProductECreation {
         this.timeAmount = 0;
     }
     
-    public String postProduct(String id) {
+    public String postProduct(String id) throws IOException {
         System.out.print(id);
         product.setUserId(id);
         product.setNumberOfRatings(0);
@@ -79,7 +85,9 @@ public class ProductECreation {
           product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
       }
     this.productFacade.create(product);
+    
     return "ProductList";
     }
+    
     
 }
