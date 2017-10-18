@@ -32,12 +32,11 @@ public class ProductView implements Serializable {
     
     
     
-    private String title = "GTX 1080";
+    private final String title = "GTX 1080";
     String currentBid;
     private String timeUnit;
     private int timeAmount;
     private Long productId = new Long(123);
-    private String sellerId;
 
     
     /**
@@ -58,9 +57,7 @@ public class ProductView implements Serializable {
         return "productPage";
     }
     
-    public String getCurrentBid(){
-        return currentBid;
-    }
+    
     
     public void printDate(Date newDate){
         System.out.println(newDate);
@@ -76,11 +73,14 @@ public class ProductView implements Serializable {
         return productId;
     }
     
-    public void editCurrentBid(String currentBid, Long productId){
-        System.out.println(currentBid);
-        ProductE prod = getOneProduct();
-        productFacade.updateBid(Integer.parseInt(currentBid), productId);
-        //product.setCurrentBid(Long.parseLong(currentBid));
+    public void editCurrentBid(String currentBid, Long productId, Long oldBid, String bidderUserName, String creatorUserName){
+            if(bidderUserName == null ? creatorUserName == null : bidderUserName.equals(creatorUserName)){
+                System.out.println("Can't bid on your own product.");
+            } else if(oldBid == null){
+                productFacade.updateBid(Integer.parseInt(currentBid), productId);
+            } else if(oldBid < Long.parseLong(currentBid)){
+                productFacade.updateBid(Integer.parseInt(currentBid), productId);
+            }
         }
     
     public String updateRating(double rating){
@@ -148,9 +148,13 @@ public class ProductView implements Serializable {
         double nrOfRatings = prod.getNumberOfRatings();
         double sumOfRatings = prod.getSumOfRatings();
         
+        System.out.println(nrOfRatings + " " + sumOfRatings);
+        
+        double tmp = 0;
+        
         if(nrOfRatings != 0){
-            return (sumOfRatings/nrOfRatings);
+            tmp = (sumOfRatings/nrOfRatings);
         }
-        return 0.0;
+        return tmp;
     }
 }
