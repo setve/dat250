@@ -13,14 +13,13 @@
                 <td><h:outputLabel value="Welcome" style="font-size:300%;font-weight:bold;"/> </td>
             </tr>
             <tr>
-                <td><a href="faces/login.xhtml">Sign in</a></td>
+                <td><h:link outcome="faces/login.xhtml" value="Sign in" style="font-size:200%;font-weight:bold;"/></td>
             </tr>
             <tr>
-                <td><a href="faces/createUser.xhtml">Sign up </a></td>
+                <td><h:link outcome="faces/createUser.xhtml" value="Sign up" style="font-size:200%;font-weight:bold;"/></td>
             </tr>
         </table>
         <br />
-        <h:link outcome="/productE/List" value="Show All ProductE Items"/>
     </h:body>
 
 </html>

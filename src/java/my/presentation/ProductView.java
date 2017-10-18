@@ -13,8 +13,6 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 
 /**
@@ -85,12 +83,14 @@ public class ProductView implements Serializable {
         //product.setCurrentBid(Long.parseLong(currentBid));
         }
     
-    public void updateRating(double rating){
+    public String updateRating(double rating){
         System.out.println("new rating: " + rating);
         ProductE prod = productFacade.find(productId);
         double sumOfRating = prod.getSumOfRatings() + rating;
         double numberOfRatings = prod.getNumberOfRatings()+1;
         productFacade.updateRating(sumOfRating, numberOfRatings, productId);
+        
+        return "ProductList";
     }
 
     public String getTimeUnit() {
@@ -133,6 +133,7 @@ public class ProductView implements Serializable {
         product.setUserId(id);
         product.setNumberOfRatings(0);
         product.setSumOfRatings(0);
+        product.setStatus("For sale");
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
       } else if (timeUnit.equals("days")) {
