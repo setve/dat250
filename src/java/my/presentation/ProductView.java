@@ -13,10 +13,8 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author SebastianRojas
@@ -75,14 +73,25 @@ public class ProductView implements Serializable {
         return productId;
     }
     
-    public void editCurrentBid(String currentBid, Long productId, Long oldBid, String bidderUserName, String creatorUserName){
+    public static void infoBox(){
+        System.out.println("In infoBox");
+        JOptionPane.showInputDialog("Denied");
+        System.out.println("Finished, but this one is pointless since java cn not work correctly since it"
+                                + "s shit.");
+
+    }
+    
+    public String editCurrentBid(String currentBid, Long productId, Long oldBid, String bidderUserName, String creatorUserName){
             if(bidderUserName == null ? creatorUserName == null : bidderUserName.equals(creatorUserName)){
-                System.out.println("Can't bid on your own product.");
+                return "failedBid";
             } else if(oldBid == null){
                 productFacade.updateBid(Integer.parseInt(currentBid), productId);
+                goToProdList();
             } else if(oldBid < Long.parseLong(currentBid)){
                 productFacade.updateBid(Integer.parseInt(currentBid), productId);
+                goToProdList();
             }
+            return "ProductList";
         }
     
     public void updateRating(double rating){
@@ -126,7 +135,9 @@ public class ProductView implements Serializable {
         return productFacade.findAll();
     } 
     
-    
+    public String goToProdList(){
+        return "ProductList";
+    }
     
     public String postProduct(String id) {
         System.out.print(id);

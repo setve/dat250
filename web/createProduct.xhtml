@@ -12,14 +12,18 @@
          <f:view>
         <h:form>
             <h:outputLabel value="Name: "/><h:inputText value="#{productECreation.product.name}"/>
+            <br/>
             <h:outputLabel value="Description: "/><h:inputText value="#{productECreation.product.description}"/>
+            <br/>
             <h:outputLabel value="Choose amout of time, then the unit (days, weeks): "/><h:inputText value="#{productECreation.timeAmount}"/>
+            <br/>
             <h:selectOneRadio value="#{productECreation.timeUnit}">
    	    <f:selectItem itemValue="days" itemLabel="Days" />
    	    <f:selectItem itemValue="weeks" itemLabel="Weeks" />
             </h:selectOneRadio>
             <navigation-case>
                 <h:commandButton action="#{productECreation.postProduct(userView.user.username)}" value="Create product"/>
+                <h:commandButton value="Back" action="#{productView.goToProdList}"/>
                 <redirect/>
             </navigation-case>
         </h:form>

@@ -12,6 +12,7 @@
         <h:form>
             <h1><h:outputText value="Auctions"/></h1>
             <h:commandButton action="createProduct" value="Create auction"/>
+             <h:commandButton action="login" value="Log out"/>
             <h:dataTable value="#{productView.productList}" var="item">
                 <h:column>
                     <f:facet name="header">
