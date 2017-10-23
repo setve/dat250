@@ -57,11 +57,7 @@ public class ProductE implements Serializable {
     public void setSumOfRatings(int sumOfRatings) {
         this.sumOfRatings += sumOfRatings;
         this.numberOfRatings++;
-        System.out.println("Product Entity Funksjon; numberOfRatings" + this.getNumberOfRatings());
-        System.out.println("Product Entity Funksjon: sumOfRatings" + this.getSumOfRatings());
     }
-    
-
     
 
     public String getUserId() {

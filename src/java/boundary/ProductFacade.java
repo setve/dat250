@@ -42,6 +42,11 @@ public class ProductFacade extends AbstractFacade<ProductE> {
         return query.getResultList();
     }
     
+    public List<ProductE> getProductAuctions() {
+        Query query = em.createQuery("SELECT p FROM ProductE p WHERE p.status = 'For sale'");
+        return query.getResultList();
+    }
+    
     public void AuctionProduct(ProductE product){
         em.persist(product);
     }

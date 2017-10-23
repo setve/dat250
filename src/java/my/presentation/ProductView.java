@@ -8,6 +8,8 @@ package my.presentation;
 import boundary.ProductFacade;
 import enteties.ProductE;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import java.util.Date;
 import java.util.List;
@@ -94,12 +96,14 @@ public class ProductView implements Serializable {
             return "ProductList";
         }
     
-    public void updateRating(double rating){
+    public String updateRating(double rating){
         System.out.println("new rating: " + rating);
         ProductE prod = productFacade.find(productId);
         double sumOfRating = prod.getSumOfRatings() + rating;
         double numberOfRatings = prod.getNumberOfRatings()+1;
         productFacade.updateRating(sumOfRating, numberOfRatings, productId);
+        
+        return "ProductList";
     }
 
     public String getTimeUnit() {
@@ -144,10 +148,13 @@ public class ProductView implements Serializable {
         product.setUserId(id);
         product.setNumberOfRatings(0);
         product.setSumOfRatings(0);
+        product.setStatus("For sale");
+        LocalDateTime d = LocalDateTime.now();
       if (timeUnit.equals("weeks")) {
-          product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
+          product.setTimeLeft(d.plusWeeks(timeAmount).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
       } else if (timeUnit.equals("days")) {
-          product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
+          //Må fremdeles fiksa at at du ikkje kan legga inn 1 dag
+          product.setTimeLeft(d.plusDays(timeAmount).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
       }
     this.productFacade.create(product);
     return "ProductList";
