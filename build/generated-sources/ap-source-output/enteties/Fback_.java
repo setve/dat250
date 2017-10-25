@@ -4,11 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-<<<<<<< HEAD
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-10-23T17:01:37")
-=======
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-10-19T16:09:04")
->>>>>>> aa86efb15c5c97212c7eacdf1e05d1302d4d1a51
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-10-23T17:16:19")
 @StaticMetamodel(Fback.class)
 public class Fback_ { 
 

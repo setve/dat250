@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Workspace/DAT250/web/productPage.xhtml</file>
+            <file>file:/C:/Workspace/DAT250/web/failedBid.xhtml</file>
+            <file>file:/C:/Workspace/DAT250/src/java/my/presentation/UserView.java</file>
+            <file>file:/C:/Workspace/DAT250/src/java/my/presentation/ProductView.java</file>
+            <file>file:/C:/Workspace/DAT250/web/createProduct.xhtml</file>
+            <file>file:/C:/Workspace/DAT250/web/ProductList.xhtml</file>
+            <file>file:/C:/Workspace/DAT250/web/feedbackPage.xhtml</file>
+        </group>
     </open-files>
 </project-private>

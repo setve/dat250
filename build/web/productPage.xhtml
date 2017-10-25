@@ -34,7 +34,7 @@
                 <h:outputLabel value="Enter bid: " />
                 <h:inputText binding="#{newBid}"/>
                 
-                <h:commandButton value="hei" action="#{productView.editCurrentBid(newBid.value, productView.oneProduct.id,
+                <h:commandButton value="Bid" action="#{productView.editCurrentBid(newBid.value, productView.oneProduct.id,
                                                        productView.oneProduct.currentBid, userView.user.username,
                                                        productView.oneProduct.userId)}"/>
             </h:form>
