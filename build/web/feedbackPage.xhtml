@@ -12,11 +12,12 @@
                 <h3>Congratulations with your new product!</h3><br/>
                 <h3>Please give a feedback</h3>
             
-                <h:outputLabel value="Rating: "/><h:inputText binding="#{newRating}" size="1" maxlength="1"/><h:outputLabel value=" (1-5)"/><br/><br/>
-                <h:outputLabel value="#{productView.oneProduct.name}"/>
-                
+                <h:outputLabel value="Rating: "/><h:inputText binding="#{newRating}" size="1" maxlength="1"/><h:outputLabel value=" (1-5)"/>
+                <br/><br/>
+                <p>Product name: <h:outputLabel value="#{productView.oneProduct.name}"/></p>
+                                
                 <h:commandButton action="#{productView.updateRating(newRating.value)}" value="Post Feedback"/>
-                <h:commandButton action="login" value="Log out"/>
+                <h:commandButton action="#{productView.seeProduct}" value="Back"/>
         </h:form>
     </f:view>
     </h:body>
