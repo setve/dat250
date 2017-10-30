@@ -32,4 +32,13 @@ public class SoapWebService {
     public List<ProductE> getActiveAuctions() {
         return this.productFacade.getProductAuctions();
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "bidForAuctions")
+    public String bidForAuctions(@WebParam(name = "bid") long bid) {
+        //TODO write your implementation code here:
+        return null;
+    }
 }
