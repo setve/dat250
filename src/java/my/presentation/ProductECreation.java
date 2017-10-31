@@ -10,6 +10,7 @@ import enteties.ProductE;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Named(value = "productECreation")
 @RequestScoped
+@RolesAllowed("USER")
 public class ProductECreation {
 
     @EJB
