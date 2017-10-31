@@ -13,6 +13,7 @@ import java.time.ZoneId;
 
 import java.util.Date;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -85,6 +86,7 @@ public class ProductView implements Serializable {
 
     }
     
+    @RolesAllowed("USER")
     public String editCurrentBid(String currentBid, Long productId, Long oldBid, String bidderUserName, String creatorUserName){
             if(bidderUserName == null ? creatorUserName == null : bidderUserName.equals(creatorUserName)){
                 return "failedBid";
@@ -98,6 +100,7 @@ public class ProductView implements Serializable {
             return "ProductList";
         }
     
+    @RolesAllowed("USER")
     public String updateRating(double rating){
         System.out.println("new rating: " + rating);
         ProductE prod = productFacade.find(productId);
@@ -145,6 +148,7 @@ public class ProductView implements Serializable {
         return "ProductList";
     }
     
+    @RolesAllowed("USER")
     public String postProduct(String id) {
         System.out.print(id);
         product.setUserId(id);
@@ -162,6 +166,7 @@ public class ProductView implements Serializable {
     return "ProductList";
     }
     
+    @RolesAllowed("USER")
     public double getAverageRating(){
         ProductE prod = getOneProduct();
         double nrOfRatings = prod.getNumberOfRatings();

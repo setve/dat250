@@ -8,6 +8,7 @@ package my.presentation;
 import boundary.FeedbackFacade;
 import enteties.Fback;
 import enteties.ProductE;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -36,6 +37,7 @@ public class FeedbackView {
         return feedback;
     }
     
+    @RolesAllowed("USER")
     public String postFeedback(ProductE product) {
         
         if(feedback.getRating() < 1)

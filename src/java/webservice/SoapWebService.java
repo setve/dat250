@@ -59,4 +59,13 @@ public class SoapWebService {
         String message = "Bid was accepted";
         return message;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "bidForAuctions")
+    public String bidForAuctions(@WebParam(name = "bid") long bid) {
+        //TODO write your implementation code here:
+        return null;
+    }
 }
