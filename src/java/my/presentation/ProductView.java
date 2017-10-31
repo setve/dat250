@@ -59,7 +59,9 @@ public class ProductView implements Serializable {
         return "productPage";
     }
     
-    
+    public String Soap(){
+        return "SoapOutPut";
+    }
     
     public void printDate(Date newDate){
         System.out.println(newDate);

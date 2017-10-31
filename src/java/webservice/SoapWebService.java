@@ -22,6 +22,13 @@ import javax.ejb.Stateless;
 @Stateless()
 public class SoapWebService {
     
+    private final String message = "Hello, ";
+    
+    public SoapWebService(){
+        
+    }
+    
+    
     @EJB
     private ProductFacade productFacade;
     /**
@@ -30,6 +37,26 @@ public class SoapWebService {
      */
     @WebMethod(operationName = "getActiveAuctions")
     public List<ProductE> getActiveAuctions() {
-        return this.productFacade.getProductAuctions();
+        return productFacade.findAll();
+//this.productFacade.getProductAuctions();
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "sayHello")
+    public String sayHello(@WebParam(name = "name") String name) {
+        //TODO write your implementation code here:
+        return "Hello ," + name + ".";
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "bidForAuction")
+    public String bidForAuction(@WebParam(name = "newBid") int newBid) {
+        //TODO write your implementation code here:
+        String message = "Bid was accepted";
+        return message;
     }
 }
