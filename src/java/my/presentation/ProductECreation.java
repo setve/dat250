@@ -9,6 +9,8 @@ import boundary.ProductFacade;
 import enteties.ProductE;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Locale;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
@@ -81,10 +83,12 @@ public class ProductECreation {
         product.setUserId(id);
         product.setNumberOfRatings(0);
         product.setSumOfRatings(0);
+        LocalDateTime d = LocalDateTime.now();
       if (timeUnit.equals("weeks")) {
-          product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
+          product.setTimeLeft(d.plusWeeks(timeAmount).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
       } else if (timeUnit.equals("days")) {
-          product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
+          //Må fremdeles fiksa at at du ikkje kan legga inn 1 dag
+          product.setTimeLeft(d.plusDays(timeAmount).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
       }
     this.productFacade.create(product);
     
