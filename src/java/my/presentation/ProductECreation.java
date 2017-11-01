@@ -10,9 +10,12 @@ import clients.notifyBuyerClient;
 import enteties.ProductE;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -27,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Named(value = "productECreation")
 @RequestScoped
+@RolesAllowed("USER")
 public class ProductECreation {
 
     @EJB
@@ -84,15 +88,15 @@ public class ProductECreation {
         product.setUserId(id);
         product.setNumberOfRatings(0);
         product.setSumOfRatings(0);
-        product.setUserIdBuyer("Undefined");
-        product.setTimeLeft(0L);
-        /*
-      if (timeUnit.equals("weeks")) {
-          product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
-      } else if (timeUnit.equals("days")) {
-          product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
-      }
-        */
+        
+        LocalDateTime d = LocalDateTime.now();
+            if (timeUnit.equals("weeks")) {
+                product.setTimeLeft(d.plusWeeks(timeAmount).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+            } 
+            else if (timeUnit.equals("days")) {
+                //Må fremdeles fiksa at at du ikkje kan legga inn 1 dag
+                product.setTimeLeft(d.plusDays(timeAmount).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+            }
         
         this.productFacade.create(product);
         System.out.println("Legger til melding i queue");
@@ -100,7 +104,8 @@ public class ProductECreation {
         System.out.println("Produkt ID: " + product.getId().toString());
         notifyBuyerCli.addMessageToQueue(product.getId().toString());
         
-        /*
+        //The run() method in this timer checke every 30. second
+        //if the product's time is expired
         Timer t = new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
         
@@ -113,13 +118,9 @@ public class ProductECreation {
                 
                     t.cancel();
                 }
-                else
-                {
-                    System.out.println("timeExpired er ikke 0");
-                }
         }
     },1000,5000);  //Every 30. second
-*/
+
     
     return "ProductList";
     }

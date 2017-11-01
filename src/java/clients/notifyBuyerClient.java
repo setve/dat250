@@ -8,7 +8,10 @@ package clients;
 import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
+import javax.jms.MessageProducer;
 import javax.jms.Queue;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 //import javax.jms.*;
 
 /**
@@ -28,20 +31,20 @@ public class notifyBuyerClient {
     
     public void addMessageToQueue(String prodID) {
         try {
+            //This line throws a NullPointerException, we don't know why
+            // The message will therefore not be added to the queue
             Connection connection = connectionFactory.createConnection();
-            /*
+            
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer messageProducer = session.createProducer(queue);
             TextMessage createdTextMessage = session.createTextMessage(prodID);
             messageProducer.send(createdTextMessage);
             messageProducer.close();
             connection.close();
-            */
-            System.out.println("Vellykket!");
         }
         catch(Exception ex) {
             System.out.println(ex);
-            System.out.println("Produkt id i addMessageToQueue: " + prodID);
+            System.out.println("Prodct ID: " + prodID);
         }
     }
 }

@@ -15,7 +15,7 @@ import javax.jms.TextMessage;
 
 /**
  *
- * @author stian
+ * @author stiand
  */
 @MessageDriven(activationConfig = {
     @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/NotificationQueue")

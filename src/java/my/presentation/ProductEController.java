@@ -6,6 +6,7 @@ import my.presentation.util.PaginationHelper;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -19,6 +20,7 @@ import javax.faces.model.SelectItem;
 
 @Named("productEController")
 @SessionScoped
+@RolesAllowed("USER")
 public class ProductEController implements Serializable {
 
     private ProductE current;
