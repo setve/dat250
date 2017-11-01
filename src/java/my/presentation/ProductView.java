@@ -17,6 +17,8 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.swing.JOptionPane;
+import javax.xml.ws.WebServiceRef;
+import webservice.SoapWebService_Service;
 /**
  *
  * @author SebastianRojas
@@ -25,6 +27,9 @@ import javax.swing.JOptionPane;
 @SessionScoped
 
 public class ProductView implements Serializable {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/SoapWebService/SoapWebService.wsdl")
+    private SoapWebService_Service service;
 
     
     @EJB
@@ -49,6 +54,10 @@ public class ProductView implements Serializable {
     this.timeUnit = new String();
     this.timeAmount = 0;
         
+    }
+    
+    public String hei(){
+        return "s";
     }
     
     public String goToNext(){
@@ -79,24 +88,8 @@ public class ProductView implements Serializable {
     
     public static void infoBox(){
         System.out.println("In infoBox");
-        JOptionPane.showInputDialog("Denied");
-        System.out.println("Finished, but this one is pointless since java cn not work correctly since it"
-                                + "s shit.");
 
     }
-    
-    public String editCurrentBid(String currentBid, Long productId, Long oldBid, String bidderUserName, String creatorUserName){
-            if(bidderUserName == null ? creatorUserName == null : bidderUserName.equals(creatorUserName)){
-                return "failedBid";
-            } else if(oldBid == null){
-                productFacade.updateBid(Integer.parseInt(currentBid), productId);
-                goToProdList();
-            } else if(oldBid < Long.parseLong(currentBid)){
-                productFacade.updateBid(Integer.parseInt(currentBid), productId);
-                goToProdList();
-            }
-            return "ProductList";
-        }
     
     public String updateRating(double rating){
         System.out.println("new rating: " + rating);
@@ -176,4 +169,29 @@ public class ProductView implements Serializable {
         }
         return tmp;
     }
+    
+    public String editCurrentBid(String currentBid, long productId, long oldBid, String bidderUserName, String creatorUserName){
+            if(bidderUserName == null ? creatorUserName == null : bidderUserName.equals(creatorUserName)){
+                return "failedBid";
+            } else if(oldBid < Long.parseLong(currentBid)){
+                //productFacade.updateBid(Integer.parseInt(currentBid), productId);
+                System.out.println("my.presentation.ProductView.editCurrentBid()");
+                bidForAuction(currentBid, productId, oldBid, bidderUserName, creatorUserName);
+                System.out.println("my.presentation.ProductView.editCurrentBid()");
+                goToProdList();
+            }
+            return "ProductList";
+        }
+
+    private String bidForAuction(java.lang.String currentBid, long productId, long oldBid, java.lang.String bidderUsername, java.lang.String creatorUsername) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        System.out.println("my.presentation.ProductView.bidForAuction()");
+        webservice.SoapWebService port = service.getSoapWebServicePort();
+        System.out.println("my.presentation.ProductView.bidForAuction()");
+        return port.bidForAuction(currentBid, productId, oldBid, bidderUsername, creatorUsername);
+    }
+    
+    
+    
 }

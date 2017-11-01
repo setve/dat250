@@ -24,7 +24,6 @@
             <h1><h:outputLabel value="#{productView.oneProduct.name}"/></h1>
         </div>
         
-        
         <img src="https://myanimelist.cdn-dena.com/s/common/uploaded_files/1453694659-16a18b3f7c3cd8a51caa70d96917ecdf.jpeg"/>
 
         <div id="content" class="center_content">
@@ -43,6 +42,7 @@
             </h:form>
             <h:form>
                 <h:commandButton value="Back" action="#{productView.goToProdList}"/>
+                <h:commandButton id="send" value="Send Another Message" action="sender"/>
             </h:form>
             
             <h:form>
