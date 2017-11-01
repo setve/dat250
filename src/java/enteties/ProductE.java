@@ -39,9 +39,18 @@ public class ProductE implements Serializable {
     private String status;
     private Long currentBid;
     private String userId;
+    private String userIdBuyer;
     private int numberOfRatings;
     private int sumOfRatings;
 
+    public String getUserIdBuyer() {
+        return userIdBuyer;
+    }
+
+    public void setUserIdBuyer(String userIdBuyer) {
+        this.userIdBuyer = userIdBuyer;
+    }
+    
     public int getNumberOfRatings() {
         return numberOfRatings;
     }
@@ -102,8 +111,6 @@ public class ProductE implements Serializable {
     public String getStatus() {
         return status;
     }
-    
-    
 
     public void setStatus(String status) {
         this.status = status;
@@ -149,6 +156,15 @@ public class ProductE implements Serializable {
     @Override
     public String toString() {
         return "enteties.Product[ id=" + id + " ]";
+    }
+    
+    public Boolean timeExpired() {
+        if(getTimeLeft() <= 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
   

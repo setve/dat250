@@ -26,15 +26,17 @@
 
         <div id="content" class="center_content">
 
-            <p> Current bid: <h:outputLabel value="#{productView.oneProduct.currentBid}"/></p>
-            <p> Remaining time:
-                <h:outputLabel value="#{productView.oneProduct.timeLeftString}"/>
+            <p> 
+                Current bid: <h:outputLabel value="#{productView.oneProduct.currentBid}"/> 
+                By user: <h:outputLabel value="#{productView.oneProduct.userIdBuyer}"/></p>
+            <p> 
+                Remaining time: <h:outputLabel value="#{productView.oneProduct.timeLeftString}"/>
             </p>            
             <h:form>
                 <h:outputLabel value="Enter bid: " />
                 <h:inputText binding="#{newBid}"/>
                 
-                <h:commandButton value="hei" action="#{productView.editCurrentBid(newBid.value, productView.oneProduct.id,
+                <h:commandButton value="Make bid" action="#{productView.editCurrentBid(newBid.value, productView.oneProduct.id,
                                                        productView.oneProduct.currentBid, userView.user.username,
                                                        productView.oneProduct.userId)}"/>
             </h:form>

@@ -51,16 +51,26 @@ public class ProductFacade extends AbstractFacade<ProductE> {
         em.persist(product);
     }
     
-    public void updateBid(int currentBid, Long productId){
+    public void updateBid(int currentBid, Long productId, String BidderUserId){
         //Query query = em.createQuery("UPDATE producte Set currentBid = " + currentBid + 
         //        " Where productId = " + productId);
         
+        ProductE product = (ProductE)em.find(ProductE.class, productId);
+        product.setCurrentBid((long)currentBid);
+        product.setUserIdBuyer(BidderUserId);
+        
+        /*
         Query query = em.createQuery("Update ProductE p Set p.currentBid = " + currentBid
         + " Where p.id = " + productId);
         query.executeUpdate();
+        
+        Query query2 = em.createQuery("Update ProductE p Set p.useridbuyer = " + BidderUserId
+        + " Where p.id = " + productId);
+        query2.executeUpdate();
+        */
     }
-    
-    public void updateRating(double sumOfRatings, double numberOfRatings, Long productId){
+
+    public void updateRating(double sumOfRatings, double numberOfRatings, Long productId) {
         Query query = em.createQuery("Update ProductE p Set p.sumOfRatings = " + sumOfRatings
         + ", p.numberOfRatings = " + numberOfRatings + " Where p.id = " + productId);
         query.executeUpdate();
@@ -70,4 +80,8 @@ public class ProductFacade extends AbstractFacade<ProductE> {
         query.executeUpdate();*/
     }
     
+    public ProductE getOneProduct(String prodID) {
+        ProductE product = (ProductE)em.find(ProductE.class, prodID);
+        return product;
+    }
 }

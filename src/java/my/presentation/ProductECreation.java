@@ -6,13 +6,17 @@
 package my.presentation;
 
 import boundary.ProductFacade;
+import clients.notifyBuyerClient;
 import enteties.ProductE;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.jms.JMSException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +33,7 @@ public class ProductECreation {
     private ProductFacade productFacade;
     
     private ProductE product;
-    
+    private notifyBuyerClient notifyBuyerCli;
     private String timeUnit;
 
     public ProductFacade getProductFacade() {
@@ -68,26 +72,55 @@ public class ProductECreation {
     /**
      * Creates a new instance of ProductECreation
      */
-    public ProductECreation() {
+    public ProductECreation() throws JMSException {
         this.product = new ProductE();
         this.timeUnit = new String();
         this.timeAmount = 0;
+        this.notifyBuyerCli = new notifyBuyerClient();
     }
     
-    public String postProduct(String id) throws IOException {
+    public String postProduct(String id) throws IOException, JMSException {
         System.out.print(id);
         product.setUserId(id);
         product.setNumberOfRatings(0);
         product.setSumOfRatings(0);
+        product.setUserIdBuyer("Undefined");
+        product.setTimeLeft(0L);
+        /*
       if (timeUnit.equals("weeks")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((604800000 * timeAmount)- 86400000 - 3600000));
       } else if (timeUnit.equals("days")) {
           product.setTimeLeft((System.currentTimeMillis()) + ((86400000 * timeAmount) - 86400000 - 3600000));
       }
-    this.productFacade.create(product);
+        */
+        
+        this.productFacade.create(product);
+        System.out.println("Legger til melding i queue");
+        //Testing
+        System.out.println("Produkt ID: " + product.getId().toString());
+        notifyBuyerCli.addMessageToQueue(product.getId().toString());
+        
+        /*
+        Timer t = new Timer();
+        t.scheduleAtFixedRate(new TimerTask() {
+        
+        @Override
+        public void run() {
+                //Send epost
+                if(product.timeExpired()) {
+                    System.out.println("Legger til melding i queue");
+                    notifyBuyerCli.addMessageToQueue(product.getId().toString());
+                
+                    t.cancel();
+                }
+                else
+                {
+                    System.out.println("timeExpired er ikke 0");
+                }
+        }
+    },1000,5000);  //Every 30. second
+*/
     
     return "ProductList";
     }
-    
-    
 }

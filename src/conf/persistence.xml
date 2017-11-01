@@ -6,6 +6,8 @@
     <class>enteties.UserE</class>
     <class>enteties.ProductE</class>
     <class>enteties.Fback</class>
+    <class>enteties.Producte_1</class>
+    <class>enteties.Usere_1</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

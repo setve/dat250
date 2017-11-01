@@ -2,6 +2,23 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/web/login.xhtml</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/clients/RESTtestClient.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/web/productPage.xhtml</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/messagebeans/NotifyBuyer.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/clients/notifyBuyerClient.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/enteties/Fback.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/enteties/service/Producte_1FacadeREST.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/my/presentation/ProductEFacade.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/enteties/Usere_1.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/my/presentation/ProductECreation.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/my/presentation/UserView.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/nbproject/build-impl.xml</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/my/presentation/ProductView.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/boundary/ProductFacade.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/src/java/enteties/ProductE.java</file>
+            <file>file:/C:/git/Auction%20innlvering%202%20ferdig/dat250/setup/glassfish-resources.xml</file>
+        </group>
     </open-files>
 </project-private>
